@@ -1,6 +1,6 @@
 require 'natto'
 
-natto = Natto::MeCab.new
+natto = Natto::MeCab.new('-E""')
 cnt = {}
 
 loop do
@@ -9,14 +9,13 @@ loop do
   a.chomp!
   # 文頭/文末の", user_name, urlを空文字列に
   a.gsub!(/^"|"$|@[A-Za-z0-9_]+?|http.+?\s/, '')
-  a.gsub!(/""/, "\"")
-  if( a != '' )
-    natto.parse(a) do |n|
-      if n.surface != ''
-        cnt[n.surface] = 0 if cnt[n.surface].nil?
-        cnt[n.surface] += 1
-      end
-    end
+  # 連続した""を"に
+  a.gsub!(/""/, '"')
+  next if a == ''
+  natto.parse(a) do |n|
+    next if n.surface == ''
+    cnt[n.surface] ||= 0
+    cnt[n.surface] += 1
   end
 end
 
