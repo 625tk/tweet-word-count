@@ -3,6 +3,8 @@ require 'natto'
 natto = Natto::MeCab.new
 cnt = Hash.new(0)
 
+mapping = {"いちごオレ"=>"名詞"}
+
 loop do
   a = gets
   break unless a
@@ -12,7 +14,7 @@ loop do
   # 連続した""を"に
   a.gsub!(/""/, '"')
   next if a == ''
-  natto.parse(a) do |n|
+  natto.parse(a, feature_constraints: mapping) do |n|
     cnt[n.surface] += 1 unless n.is_eos?
   end
 end
