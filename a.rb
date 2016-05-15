@@ -13,7 +13,7 @@ loop do
   a.gsub!(/""/, '"')
   next if a == ''
   natto.parse(a) do |n|
-    next if n.surface == ''
+    next if n.is_eos?
     cnt[n.surface] ||= 0
     cnt[n.surface] += 1
   end
