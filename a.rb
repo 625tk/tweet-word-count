@@ -1,7 +1,6 @@
 require 'natto'
 
-natto = Natto::MeCab.new('-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd')
-#natto = Natto::MeCab.new
+natto = Natto::MeCab.new
 cnt = {}
 
 loop do
