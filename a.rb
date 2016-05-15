@@ -1,7 +1,7 @@
 require 'natto'
 
-natto = Natto::MeCab.new('-E""')
-cnt = {}
+natto = Natto::MeCab.new
+cnt = Hash.new(0)
 
 loop do
   a = gets
@@ -13,9 +13,7 @@ loop do
   a.gsub!(/""/, '"')
   next if a == ''
   natto.parse(a) do |n|
-    next if n.is_eos?
-    cnt[n.surface] ||= 0
-    cnt[n.surface] += 1
+    cnt[n.surface] += 1 unless n.is_eos?
   end
 end
 
