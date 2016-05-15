@@ -7,10 +7,8 @@ loop do
   a = gets
   break unless a
   a.chomp!
-  # p a
   a.gsub!(/^"|"$|@[A-Za-z0-9_]+?|http.+?\s/, '')
   a.gsub!(/""/, "\"")
-  # p a
   if( a != '' )
     natto.parse(a) do |n|
       if n.surface != ''
