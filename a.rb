@@ -8,7 +8,7 @@ mapping = {"いちごオレ"=>"名詞"}
 while a = gets
   a.chomp!
   # 文頭/文末の", user_name, urlを空文字列に
-  a.gsub!(/^"|"$|@[A-Za-z0-9_]+?|http.+?\s/, '')
+  a.gsub!(/^"|"$|@\w+?|http.+?\s/, '')
   # 連続した""を"に
   a.gsub!(/""/, '"')
   next if a == ''
