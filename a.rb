@@ -5,9 +5,7 @@ cnt = Hash.new(0)
 
 mapping = {"いちごオレ"=>"名詞"}
 
-loop do
-  a = gets
-  break unless a
+while a = gets
   a.chomp!
   # 文頭/文末の", user_name, urlを空文字列に
   a.gsub!(/^"|"$|@[A-Za-z0-9_]+?|http.+?\s/, '')
