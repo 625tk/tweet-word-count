@@ -9,6 +9,7 @@ outというファイルができてればできてる。
 おしまい。  
 
 ##実行時に必要なもの
-mecab  
-gem 'natto'  
-自分の全ツイート  
+ruby
+mecab (辞書とともに適当にいれてください。)
+gem 'natto'(gem installしてください)
+自分の全ツイート(web版twitterからdl可)  
